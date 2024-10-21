@@ -1,0 +1,20 @@
+version: "3.9"
+
+include:
+  - infrastructure/unleash/compose.yml
+
+services:
+  user_svc:
+    build:
+      context: ./backends/user_svc
+      dockerfile: ./containers/Dockerfile
+  
+  payment_svc:
+    build:
+      context: ./backends/payment_svc
+      dockerfile: ./containers/Dockerfile
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./containers/Dockerfile
