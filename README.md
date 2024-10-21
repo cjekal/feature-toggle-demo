@@ -15,3 +15,7 @@
     1. update `settings.py` to include `rest_framework` in the `INSTALLED_APPS` global list
     1. `python manage.py startapp api`
     1. update `settings.py` to include `api` in the `INSTALLED_APPS` global list
+1. `cd backends/user_svc/`
+    1. update `settings.py` to include `rest_framework` in the `INSTALLED_APPS` global list
+    1. `python manage.py startapp api`
+    1. update `settings.py` to include `api` in the `INSTALLED_APPS` global list
