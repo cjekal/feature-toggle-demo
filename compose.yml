@@ -8,13 +8,25 @@ services:
     build:
       context: ./backends/user_svc
       dockerfile: ./containers/Dockerfile
+    ports:
+      - 8001:8000
+    volumes:
+      - ./backends/user_svc:/app
   
   payment_svc:
     build:
       context: ./backends/payment_svc
       dockerfile: ./containers/Dockerfile
+    ports:
+      - 8002:8000
+    volumes:
+      - ./backends/payment_svc:/app
   
   frontend:
     build:
       context: ./frontend
       dockerfile: ./containers/Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./frontend:/app

@@ -19,4 +19,4 @@ class PaymentSerializer(serializers.Serializer):
         instance.user_name = self.get_user_name(user_id)
 
     def get_user_name(self, user_id):
-        return UserService.new().get_user_details(user_id)["user_name"]
+        return UserService().get_user_details(user_id)["user_name"]
