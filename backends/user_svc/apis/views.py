@@ -1,3 +1,13 @@
 from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
-# Create your views here.
+
+class UserProfileView(APIView):
+    def get(self, request, pk):
+        print(f"request.data: {request.data}")
+        user_profile = {
+            "id": pk,
+            "user_name": f"user with id: {pk}"
+        }
+        return Response(user_profile)

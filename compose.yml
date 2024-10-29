@@ -4,7 +4,7 @@ include:
   - infrastructure/unleash/compose.yml
 
 services:
-  user_svc:
+  user-svc:
     build:
       context: ./backends/user_svc
       dockerfile: ./containers/Dockerfile
@@ -13,7 +13,7 @@ services:
     volumes:
       - ./backends/user_svc:/app
   
-  payment_svc:
+  payment-svc:
     build:
       context: ./backends/payment_svc
       dockerfile: ./containers/Dockerfile
