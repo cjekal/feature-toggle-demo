@@ -10,13 +10,20 @@ class PaymentSerializer(serializers.Serializer):
     user_name = serializers.CharField(required=False, allow_blank=True, max_length=100)
 
     def create(self, validated_data):
-        return Payment.objects.create(**validated_data, user_name=self.get_user_name(validated_data.get('user_id')))
+        return Payment.objects.create(
+            amount = self.get_payment_amount(validated_data.get('amount')),
+            user_id = validated_data.get('user_id'),
+            user_name=self.get_user_name(validated_data.get('user_id'))
+        )
 
     def update(self, instance, validated_data):
-        instance.amount = validated_data.get('amount', instance.amount)
+        instance.amount = self.get_payment_amount(validated_data.get('amount', instance.amount))
         user_id = validated_data.get('user_id', instance.user_id)
         instance.user_id = user_id
         instance.user_name = self.get_user_name(user_id)
 
     def get_user_name(self, user_id):
         return UserService().get_user_details(user_id)["user_name"]
+
+    def get_payment_amount(self, amount):
+        return amount
