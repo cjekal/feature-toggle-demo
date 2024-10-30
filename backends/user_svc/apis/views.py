@@ -8,6 +8,7 @@ class UserProfileView(APIView):
         print(f"request.data: {request.data}")
         user_profile = {
             "id": pk,
-            "user_name": f"user with id: {pk}"
+            "user_name": f"user with id: {pk}",
+            "payment_limit": pk * 100
         }
         return Response(user_profile)
